@@ -21,6 +21,12 @@ const itemSchema = new Schema({
         type: Date,
         required: true,
     },
+    status: {
+        type: String,
+        required: true,
+        enum: ['Delivered', 'Available'],
+        default: 'Available'
+    },
     userId: {
         type: Types.ObjectId,
         ref: "User",

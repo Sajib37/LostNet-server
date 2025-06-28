@@ -8,7 +8,21 @@ const craeteItemIntoDB = async (payload) => {
 
     return result;
 }
+const updateItemIntoDB = async ({ payload, id }) => {
+    const isExist = await Item.findById(id);
+    if (!isExist) {
+        throw new AppError(httpStatus.BAD_REQUEST, "Item Not Found !!")
+    }
 
+    const result = await Item.updateOne({ _id: id }, { $set: payload })
+    return result;
+}
+const deletItemFromDB = async (id) => {
+    const result = await Item.deleteOne({ _id: id })
+    return result;
+}
 export const itemServices = {
-    craeteItemIntoDB
+    craeteItemIntoDB,
+    updateItemIntoDB,
+    deletItemFromDB
 }
