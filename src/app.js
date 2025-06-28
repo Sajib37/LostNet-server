@@ -8,9 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("Welcome to the LostNet Server !!");
+    res.send("Welcome to the LostNet application Server !!");
 });
 
-// app.use("/api/v1", router);
+app.use("/api/v1", router);
 
 export default app;
