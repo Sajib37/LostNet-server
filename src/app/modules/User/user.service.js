@@ -46,7 +46,42 @@ const loginUserIntoApps = async (payload) => {
     }
 };
 
+const getSingleUserFromDB = async (id) => {
+    const user = await User.findOne({ _id: id })
+    if (!user) {
+        throw new AppError(httpStatus.BAD_REQUEST, "User Not Found !!")
+    }
+    return user;
+}
+
+const allUserFromDB = async () => {
+    const users = await User.find();
+    return users;
+}
+const updateUserIntoDB = async ({payload,id}) => {
+    const isExist = await User.findById(id);
+    if (!isExist) {
+        throw new AppError(httpStatus.BAD_REQUEST, "User Not Found !!")
+    }
+    const result = await User.updateOne({ _id: id }, { $set: payload })
+    return result;
+}
+
+const deletUserFromDB = async (id) => {
+    const isExist = await User.findById(id);
+    if (!isExist) {
+        throw new AppError(httpStatus.BAD_REQUEST, "User Not Found !!")
+    }
+
+    const result = await User.deleteOne({ _id: id })
+    return result
+}
+
 export const userServices = {
     registerUserIntoDB,
-    loginUserIntoApps
+    loginUserIntoApps,
+    getSingleUserFromDB,
+    allUserFromDB,
+    updateUserIntoDB,
+    deletUserFromDB
 };

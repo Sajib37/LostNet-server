@@ -24,10 +24,60 @@ const loginUser = catchAsync(async (req, res) => {
         data: result,
     });
 })
+const getSingleUser = catchAsync(async (req, res) => {
+    const id = req.params.id;
+    const result= await userServices.getSingleUserFromDB(id)
+    
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "get Single user successfully!",
+        data: result,
+    });
+})
+const getAllUser = catchAsync(async (req, res) => {
+    const result = await userServices.allUserFromDB();
+    
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Get all users successfully!",
+        data: result,
+    });
+})
+const updateUser = catchAsync(async (req, res) => {
+    const payload = req.body;
+    const id = req.params.id;
+    const result = await userServices.updateUserIntoDB({payload,id})
+    
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Update user successfully!",
+        data: result,
+    });
+})
+
+const deletUser = catchAsync(async (req, res) => {
+    const id = req.params.id;
+    const result = await userServices.deletUserFromDB(id)
+    
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Delet user successfully!",
+        data: result,
+    });
+})
+
 
 
 
 export const userControllers = {
     registerUser,
-    loginUser
+    loginUser,
+    getSingleUser,
+    getAllUser,
+    updateUser,
+    deletUser
 }
