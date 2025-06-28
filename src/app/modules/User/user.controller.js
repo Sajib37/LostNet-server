@@ -13,7 +13,21 @@ const registerUser = catchAsync(async (req, res) => {
         data: result,
     });
 })
+const loginUser = catchAsync(async (req, res) => {
+    const paylod = req.body;
+    const result= await userServices.loginUserIntoApps(paylod)
+    
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "User Login successfully!",
+        data: result,
+    });
+})
+
+
 
 export const userControllers = {
-    registerUser
+    registerUser,
+    loginUser
 }

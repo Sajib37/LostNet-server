@@ -50,6 +50,6 @@ const itemSchema = new Schema({
 }, { timestamps: true })
 
 // Add the mongoose-bcrypt plugin
-UserSchema.plugin(mongooseBcrypt);
+itemSchema.plugin(mongooseBcrypt);
 
 export const User= model('User',itemSchema)
