@@ -21,8 +21,18 @@ const deletItemFromDB = async (id) => {
     const result = await Item.deleteOne({ _id: id })
     return result;
 }
+const getAllItemFromDB = async () => {
+    const result = await Item.find().populate('userId');
+    return result;
+}
+const getSingleItemFromDB = async (id) => {
+    const result = await Item.findById(id).populate('userId')
+    return result;
+}
 export const itemServices = {
     craeteItemIntoDB,
     updateItemIntoDB,
-    deletItemFromDB
+    deletItemFromDB,
+    getAllItemFromDB,
+    getSingleItemFromDB
 }

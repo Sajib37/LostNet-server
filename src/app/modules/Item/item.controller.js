@@ -34,9 +34,33 @@ const deletItem = catchAsync(async (req, res) => {
         data: result,
     });
 })
+const getAllItem = catchAsync(async (req, res) => {
+    const result= await itemServices.getAllItemFromDB()
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "All Item retrieve successfully!",
+        data: result,
+    });
+})
+
+const getSingleItem = catchAsync(async (req, res) => {
+    const id= req.params.id
+    const result= await itemServices.getSingleItemFromDB(id)
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Item retrieve successfully!",
+        data: result,
+    });
+})
+
+
 
 export const itemControllers = {
     createItem,
     upadetItem,
-    deletItem
+    deletItem,
+    getAllItem,
+    getSingleItem
 }

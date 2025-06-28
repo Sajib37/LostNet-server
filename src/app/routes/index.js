@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { userRoutes } from "../modules/User/user.route.js";
 import { itemRoutes } from "../modules/Item/item.route.js";
+import { itemRequestRoutes } from "../modules/calimRequest/claimRequest.route.js";
 
 const router = Router();
 
@@ -12,6 +13,10 @@ const moduleRoutes = [
     {
         path: '/item',
         route: itemRoutes
+    },
+    {
+        path: '/item-request',
+        route: itemRequestRoutes
     }
 ]
 
