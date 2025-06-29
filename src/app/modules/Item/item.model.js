@@ -27,6 +27,11 @@ const itemSchema = new Schema({
         enum: ['Delivered', 'Available'],
         default: 'Available'
     },
+    deliveredTo: {
+        type: Types.ObjectId,
+        ref: "User",
+        required: false
+    },
     userId: {
         type: Types.ObjectId,
         ref: "User",
