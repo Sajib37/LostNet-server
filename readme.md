@@ -81,8 +81,15 @@ JWT_SECRET=your_jwt_secret
 
 ### Auth
 
-* `POST /api/v1/auth/signup` → Register a new user
-* `POST /api/v1/auth/login` → Login with email and password
+* `POST /api/v1/users/register` → Register a new user
+* `POST /api/v1/users/login` → Login with email and password
+
+### Profile
+
+* `GET /api/v1/users/:id` → To get single user
+* `GET /api/v1/users/` → To get all users
+* `PATCH /api/v1/users/:id` → To Update user
+* `DELET /api/v1/users/:id` → To Delet user 
 
 ### Items
 
@@ -90,12 +97,14 @@ JWT_SECRET=your_jwt_secret
 * `GET /api/v1/items` → Get all available items
 * `GET /api/v1/items/:id` → Get item by ID
 * `PATCH /api/v1/items/:id` → Update item information and image
+* `GET /api/v1/items/delivered-items` → Get all delivered items
+* `DELET /api/v1/items/:id` → Delet item by ID
 
 ### Claim Requests
 
-* `POST /api/v1/claims` → Send a claim request for an item
-* `GET /api/v1/claims/requested-by/:userId` → Get all claim requests made by a user
-* `GET /api/v1/claims/posted-by/:posterId` → Get all claim requests for items posted by a specific user
+* `POST /api/v1/item-request` → Send a claim request for an item
+* `GET /api/v1/item-request/requested-by/:userId` → Get all claim requests made by a user
+* `GET /api/v1/item-request/posted-by/:posterId` → Get all claim requests for items posted by a specific user
 
 ---
 
@@ -107,11 +116,6 @@ Start the server:
 npm start
 ```
 
-Or use nodemon for development:
-
-```bash
-npx nodemon index.js
-```
 
 Test your API using Postman or integrate it with a frontend (e.g., React or React Native).
 
