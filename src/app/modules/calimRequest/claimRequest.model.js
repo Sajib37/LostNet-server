@@ -6,11 +6,16 @@ const itemRequestSchema = new Schema({
     ref: 'Item',      
     required: true
   },
-  userId: {
+  requestedBy: {
     type: Types.ObjectId,
     ref: 'User',      
     required: true
   },
+  isDeleted: {
+    type: Boolean,
+    required: true,
+    default:false
+  }
 },{timestamps:true});
 
 export const ItemRequest = model('ItemRequest', itemRequestSchema);

@@ -22,7 +22,11 @@ const deletItemFromDB = async (id) => {
     return result;
 }
 const getAllItemFromDB = async () => {
-    const result = await Item.find().populate('userId');
+    const result = await Item.find({status:"Available"}).populate('userId');
+    return result;
+}
+const getAllDeliveredItemFromDB = async () => {
+    const result = await Item.find({status:"Delivered"}).populate('userId');
     return result;
 }
 const getSingleItemFromDB = async (id) => {
@@ -34,5 +38,6 @@ export const itemServices = {
     updateItemIntoDB,
     deletItemFromDB,
     getAllItemFromDB,
-    getSingleItemFromDB
+    getSingleItemFromDB,
+    getAllDeliveredItemFromDB
 }

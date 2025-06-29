@@ -43,6 +43,15 @@ const getAllItem = catchAsync(async (req, res) => {
         data: result,
     });
 })
+const getAllDeliveredItem = catchAsync(async (req, res) => {
+    const result= await itemServices.getAllDeliveredItemFromDB()
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "All Delivered Item retrieve successfully!",
+        data: result,
+    });
+})
 
 const getSingleItem = catchAsync(async (req, res) => {
     const id= req.params.id
@@ -62,5 +71,6 @@ export const itemControllers = {
     upadetItem,
     deletItem,
     getAllItem,
-    getSingleItem
+    getSingleItem,
+    getAllDeliveredItem
 }
