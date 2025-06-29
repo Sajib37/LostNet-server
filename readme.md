@@ -32,7 +32,7 @@ LostNet is a backend service designed to help individuals find their lost items 
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/your-username/lostnet.git
+git clone https://github.com/Sajib37/LostNet-server.git
 cd lostnet
 ```
 
@@ -53,12 +53,16 @@ npm install express mongoose dotenv cors jsonwebtoken http-status cloudinary mul
 Create a `.env` file in the root directory and add your environment variables like:
 
 ```env
-PORT=5000
-DATABASE_URL=your_mongo_url
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-JWT_SECRET=your_jwt_secret
+    PORT= port number
+    DATABASE_URL=your_mongo_url
+    NODE_ENV=development
+    SUPER_ADMIN_EMAIL=your_admin_email@example.com
+    SUPER_ADMIN_PASSWORD=your_admin_password
+    ACCESS_TOKEN_SECRET=your_jwt_secret
+    ACCESS_TOKEN_EXPIRES= Token expires time
+    CLOUDINARY_CLOUD_NAME=your_cloud_name
+    CLOUDINARY_API_KEY=your_api_key
+    CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 ---
