@@ -27,7 +27,7 @@ const itemSchema = new Schema({
         enum: [USER_ROLE.admin, USER_ROLE.user, USER_ROLE.superAdmin],
         default: USER_ROLE.user
     },
-    photo: {
+    image: {
         type: String,
         default: USER_INFO.notProvided
     },
