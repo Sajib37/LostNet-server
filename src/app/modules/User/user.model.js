@@ -2,7 +2,7 @@ import { model, Schema } from "mongoose";
 import { USER_INFO, USER_ROLE } from "./user.constant.js";
 import mongooseBcrypt from 'mongoose-bcrypt';
 
-const itemSchema = new Schema({
+const userSchema = new Schema({
     firstName: {
         type: String,
         required: true
@@ -29,7 +29,7 @@ const itemSchema = new Schema({
     },
     image: {
         type: String,
-        default: USER_INFO.notProvided
+        default: USER_INFO.photo
     },
     presentAddress: {
         type: String,
@@ -40,7 +40,7 @@ const itemSchema = new Schema({
         default: USER_INFO.notProvided
     },
     dateOfBirth: {
-        type: Date,
+        type: String,
         default: USER_INFO.notProvided
     },
     gurdianName: {
@@ -49,6 +49,6 @@ const itemSchema = new Schema({
     },
 }, { timestamps: true })
 
-itemSchema.plugin(mongooseBcrypt);
+userSchema.plugin(mongooseBcrypt);
 
-export const User= model('User',itemSchema)
+export const User= model('User',userSchema)

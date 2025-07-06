@@ -5,6 +5,7 @@ import { userServices } from "./user.service.js";
 import { sendImageToCloudinary } from "../../utils/sendImageToCloudinary.js";
 const registerUser = catchAsync(async (req, res) => {
     const userData = req.body;
+    console.log(req.body)
     const result= await userServices.registerUserIntoDB(userData)
     
     sendResponse(res, {
@@ -48,7 +49,7 @@ const getAllUser = catchAsync(async (req, res) => {
 })
 const updateUser = catchAsync(async (req, res) => {
         let payload = {};
-    
+        console.log(req.file)
         if (req.body.data) {
             payload = JSON.parse(req.body.data);
         }
