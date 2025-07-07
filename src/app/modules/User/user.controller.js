@@ -49,7 +49,6 @@ const getAllUser = catchAsync(async (req, res) => {
 })
 const updateUser = catchAsync(async (req, res) => {
         let payload = {};
-        console.log(req.file)
         if (req.body.data) {
             payload = JSON.parse(req.body.data);
         }

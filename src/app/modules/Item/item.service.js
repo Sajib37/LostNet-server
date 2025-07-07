@@ -33,11 +33,18 @@ const getSingleItemFromDB = async (id) => {
     const result = await Item.findById(id).populate('userId')
     return result;
 }
+
+const getItemsByUserIdFromDB = async (userId) => {
+    console.log(userId)
+    const result = await Item.find({ userId:userId }).populate('userId');
+    return result;
+}
 export const itemServices = {
     craeteItemIntoDB,
     updateItemIntoDB,
     deletItemFromDB,
     getAllItemFromDB,
     getSingleItemFromDB,
-    getAllDeliveredItemFromDB
+    getAllDeliveredItemFromDB,
+    getItemsByUserIdFromDB
 }

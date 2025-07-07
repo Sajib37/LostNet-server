@@ -62,8 +62,26 @@ const getItemRequestsByRequesterFromDB = async (requestedById) => {
     return result;
 };
 
+const getRequestByItemFromDB = async (itemId) => {
+    const result = await ItemRequest.find({
+        itemId: itemId,
+        isDeleted: false,
+    })
+        .populate("requestedBy")
+        .populate({
+            path: "itemId",
+            populate: {
+                path: "userId",
+                model: "User",
+            },
+        });
+
+    return result;
+};
+
 export const ItemRequestServices = {
     postItemRequestIntoDB,
     getItemRequestPostedByFromDB,
     getItemRequestsByRequesterFromDB,
+    getRequestByItemFromDB,
 };
