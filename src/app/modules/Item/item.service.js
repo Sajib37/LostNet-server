@@ -22,7 +22,7 @@ const deletItemFromDB = async (id) => {
     return result;
 }
 const getAllItemFromDB = async () => {
-    const result = await Item.find({status:"Available"}).populate('userId');
+    const result = await Item.find().populate('userId');
     return result;
 }
 const getAllDeliveredItemFromDB = async () => {

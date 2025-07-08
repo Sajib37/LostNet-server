@@ -52,7 +52,8 @@ const updateUser = catchAsync(async (req, res) => {
         if (req.body.data) {
             payload = JSON.parse(req.body.data);
         }
-    
+        console.log(req.body.data)
+        console.log("File details:", req.file)
         if (req.file) {
             const uploadResult = await sendImageToCloudinary(
                 req.file.originalname,
