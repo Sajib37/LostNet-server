@@ -9,5 +9,5 @@ router.delete('/:id', itemControllers.deletItem)
 router.get("/get-single-item/:id",itemControllers.getSingleItem)
 router.get("/", itemControllers.getAllItem)
 router.get("/delivered-items",itemControllers.getAllDeliveredItem)
-router.get("/user-items/:id", itemControllers.getItemsByUserId)
+router.get("/userItems/:id", itemControllers.getItemsByUserId)
 export const itemRoutes = router;
