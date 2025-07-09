@@ -89,16 +89,21 @@ const getSingleItem = catchAsync(async (req, res) => {
         data: result,
     });
 });
+
+
 const getItemsByUserId = catchAsync(async (req, res) => {
-    const userId = req.params.id;
+    const userId = req.params.userId;
     const result = await itemServices.getItemsByUserIdFromDB(userId);
+
     sendResponse(res, {
         statusCode: httpStatus.OK,
         success: true,
-        message: "Item by userId retrieve successfully!",
+        message: "Items fetched by user ID successfully!",
         data: result,
     });
 });
+
+
 
 export const itemControllers = {
     createItem,
@@ -108,4 +113,5 @@ export const itemControllers = {
     getSingleItem,
     getAllDeliveredItem,
     getItemsByUserId,
+
 };

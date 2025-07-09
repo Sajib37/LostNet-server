@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { Item } from "./item.model.js"
 
 const craeteItemIntoDB = async (payload) => {
@@ -35,10 +36,16 @@ const getSingleItemFromDB = async (id) => {
 }
 
 const getItemsByUserIdFromDB = async (userId) => {
-    console.log(userId)
-    const result = await Item.find({ userId:userId }).populate('userId');
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+        throw new Error("Invalid user ID");
+    }
+
+    const objectId = new mongoose.Types.ObjectId(userId);
+    const result = await Item.find({ userId: objectId }).populate("userId");
+
     return result;
-}
+};
+
 export const itemServices = {
     craeteItemIntoDB,
     updateItemIntoDB,
